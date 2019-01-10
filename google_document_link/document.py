@@ -131,9 +131,7 @@ class GdocDocument(orm.Model):
         'deadline': fields.date('Deadline'),
 
         # OpenERP many2one 
-        'protocol_id': fields.many2one('gdoc.protocol', 'Protocol', 
-            domain=[('invisible', '=', False)],
-            ),
+        'protocol_id': fields.many2one('gdoc.protocol', 'Protocol'),
         'user_id': fields.many2one('res.users', 'User', required=True),
 
         # Foreign keys:
@@ -141,8 +139,9 @@ class GdocDocument(orm.Model):
         'product_id': fields.many2one('product.product', 'Product'),
         'account_id': fields.many2one('account.analytic.account', 'Account'),
         'order_id': fields.many2one('sale.order', 'Sale Order'),
-        #'timesheet_id': fields.many2one('account.analytic.timesheet', 'Timesheet'),
-        #'picking_id': fields.many2one('stock.picking', 'Picking'),
+        'timesheet_id': fields.many2one('hr.analytic.timesheet', 'Timesheet'),
+        'picking_id': fields.many2one('stock.picking', 'Picking'),
+        # Invoice DDT
                 
         'priority': fields.selection([
             ('lowest', 'Lowest'),
@@ -190,4 +189,49 @@ class SaleOrder(orm.Model):
         'gdoc_ids': fields.one2many(
             'gdoc.document', 'order_id', 'Google Document'),
         }
+
+class ProductProduct(orm.Model):
+    """ Model name: Product Product
+    """
+    
+    _inherit = 'product.product'
+    
+    _columns = {
+        'gdoc_ids': fields.one2many(
+            'gdoc.document', 'product_id', 'Google Document'),
+        }
+        
+class AccountAnalyticAccount(orm.Model):
+    """ Model name: Account analytic account
+    """
+    
+    _inherit = 'account.analytic.account'
+    
+    _columns = {
+        'gdoc_ids': fields.one2many(
+            'gdoc.document', 'account_id', 'Google Document'),
+        }
+
+class HrAnalyticTYimesheet(orm.Model):
+    """ Model name: HR Analytic Timesheet
+    """
+    
+    _inherit = 'hr.analytic.timesheet'
+    
+    _columns = {
+        'gdoc_ids': fields.one2many(
+            'gdoc.document', 'timesheet_id', 'Google Document'),
+        }
+
+class StockPicking(orm.Model):
+    """ Model name: Stock Picking
+    """
+    
+    _inherit = 'stock.picking'
+    
+    _columns = {
+        'gdoc_ids': fields.one2many(
+            'gdoc.document', 'picking_id', 'Google Document'),
+        }
+        
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

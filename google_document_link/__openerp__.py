@@ -34,7 +34,10 @@
         'product',
         'analytic',
         'account',
+        'stock',
         'hr',
+        'hr_timesheet',
+        'intervention_report',
         ],
     'init_xml': [],
     'demo': [],
@@ -45,6 +48,7 @@
         'gdoc_workflow.xml',
         
         'document_view.xml',        
+        
         ],
     'active': False,
     'installable': True,

@@ -79,9 +79,11 @@
                     <filter name="group_user" string="User" context="{'group_by': 'user_id'}"/>
                     <filter name="group_protocol" string="Protocol" context="{'group_by': 'protocol_id'}"/>
                     <filter name="group_partner" string="Partner" context="{'group_by': 'partner_id'}"/>
-                    <filter name="group_product" string="Productl" context="{'group_by': 'product_id'}"/>
+                    <filter name="group_product" string="Product" context="{'group_by': 'product_id'}"/>
                     <filter name="group_account" string="Account" context="{'group_by': 'account_id'}"/>
                     <filter name="group_partner" string="Order" context="{'group_by': 'order_id'}"/>
+                    <filter name="group_timesheet" string="Timesheet" context="{'group_by': 'timesheet_id'}"/>
+                    <filter name="group_picking" string="Picking" context="{'group_by': 'picking_id'}"/>
                     <filter string="Status" context="{'group_by': 'state'}" icon="terp-stock_effects-object-colorize"/>
                 </group>                
            </search>
@@ -92,12 +94,16 @@
         <field name="model">gdoc.document</field>        
         <field name="arch" type="xml">
             <tree string="Google Doc. document" colors="grey:state=='draft';blue:state=='timed';black:state=='confirmed';red:state=='cancel'">
-               <field name="protocol_id" required="1" />
                <field name="date" />
                <field name="name" />
+               <field name="protocol_id" />
                <field name="description" />
                <field name="partner_id" />
                <field name="product_id" />
+               <field name="account_id" invisible="1"/>
+               <field name="timesheet_id" invisible="1"/>
+               <field name="picking_id" invisible="1"/>
+
                <field name="user_id" invisible="1"/>
                <field name="priority" invisible="1"/>
                <field name="deadline" string="Scad." invisible="1" />
@@ -176,6 +182,8 @@
                                    <field name="product_id" options="{'limit': 10, 'create': false, 'create_edit': false}" />
                                    <field name="account_id" options="{'limit': 10, 'create': false, 'create_edit': false}" />
                                    <field name="order_id" options="{'limit': 10, 'create': false, 'create_edit': false}" />
+                                   <field name="timesheet_id" options="{'limit': 10, 'create': false, 'create_edit': false}" />
+                                   <field name="picking_id" options="{'limit': 10, 'create': false, 'create_edit': false}" />
                                </group>    
                            </page>
                        </notebook>
@@ -260,6 +268,75 @@
                        </field>
                    </group>    
                </page>
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_product_page_form">
+        <field name="name">product.product.form</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[1]" position="after">
+               <page string="Gdoc" groups="google_document_link.group_gdoc_user,google_document_link.group_gdoc_admin">
+                   <group colspan="4" col="4" name="foreign_keys">
+                       <separator string="Google Docs:" colspan="4"/>
+                       <field name="gdoc_ids" colspan="4" nolabel="1" context="{'default_product_id': active_id, 'embedded': True}">
+                       </field>
+                   </group>    
+               </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_intervention_page_form">
+        <field name="name">hr.analytic.timesheet.form</field>
+        <field name="model">hr.analytic.timesheet</field>
+        <field name="inherit_id" ref="intervention_report.view_hr_analytic_timesheet_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[1]" position="after">
+               <page string="Gdoc" groups="google_document_link.group_gdoc_user,google_document_link.group_gdoc_admin">
+                   <group colspan="4" col="4" name="foreign_keys">
+                       <separator string="Google Docs:" colspan="4"/>
+                       <field name="gdoc_ids" colspan="4" nolabel="1" context="{'default_timesheet_id': active_id, 'embedded': True}">
+                       </field>
+                   </group>    
+               </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_picking_page_form">
+        <field name="name">stock.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[1]" position="after">
+               <page string="Gdoc" groups="google_document_link.group_gdoc_user,google_document_link.group_gdoc_admin">
+                   <group colspan="4" col="4" name="foreign_keys">
+                       <separator string="Google Docs:" colspan="4"/>
+                       <field name="gdoc_ids" colspan="4" nolabel="1" context="{'default_picking_id': active_id, 'embedded': True}">
+                       </field>
+                   </group>    
+               </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_analytic_page_form">
+        <field name="name">account.analytic.account.form</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="after">
+               <notebook>
+                   <page string="Gdoc" groups="google_document_link.group_gdoc_user,google_document_link.group_gdoc_admin">
+                       <group colspan="4" col="4" name="foreign_keys">
+                           <separator string="Google Docs:" colspan="4"/>
+                           <field name="gdoc_ids" colspan="4" nolabel="1" context="{'default_account_id': active_id, 'embedded': True}">
+                           </field>
+                       </group>    
+                   </page>
+               </notebook>    
             </xpath>
         </field>
     </record>
