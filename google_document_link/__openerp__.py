@@ -18,7 +18,7 @@
 ###############################################################################
 
 {
-    'name': 'Google document link',
+    'name': 'Google document link management',
     'version': '0.1',
     'category': 'Google',
     'description': ''' 
@@ -30,12 +30,21 @@
     'license': 'AGPL-3',
     'depends': [
         'base',
+        'sale',
+        'product',
+        'analytic',
+        'account',
+        'hr',
         ],
     'init_xml': [],
     'demo': [],
     'data': [
+        'security/gdoc_group.xml',
         'security/ir.model.access.csv',    
-        'document_view.xml',
+        
+        'gdoc_workflow.xml',
+        
+        'document_view.xml',        
         ],
     'active': False,
     'installable': True,
