@@ -1,0 +1,426 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* google_document_link
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-10 13:38+0000\n"
+"PO-Revision-Date: 2019-01-10 14:43+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: it\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+#: field:gdoc.document,account_id:0
+msgid "Account"
+msgstr "Contratto"
+
+#. module: google_document_link
+#: model:ir.ui.menu,name:google_document_link.gdoc_administration
+msgid "Administration"
+msgstr "Amministrazione"
+
+#. module: google_document_link
+#: model:ir.model,name:google_document_link.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Conto Analitico"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.gdoc_document_form_view
+#: view:gdoc.document:google_document_link.gdoc_document_tree_view
+#: selection:gdoc.document,state:0
+msgid "Cancel"
+msgstr "Annulla"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+msgid "Cancel state"
+msgstr "Stato annullato"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.gdoc_document_form_view
+#: view:gdoc.document:google_document_link.gdoc_document_tree_view
+#: selection:gdoc.document,state:0
+msgid "Confirmed"
+msgstr "Confermato"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+msgid "Confirmed state"
+msgstr "Stato confermato"
+
+#. module: google_document_link
+#: field:gdoc.document,create_uid:0 field:gdoc.protocol,create_uid:0
+msgid "Created by"
+msgstr "Creato da"
+
+#. module: google_document_link
+#: field:gdoc.document,create_date:0 field:gdoc.protocol,create_date:0
+msgid "Created on"
+msgstr "Creato il"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+#: field:gdoc.document,date:0
+msgid "Date"
+msgstr "Data"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+msgid "Date from"
+msgstr "Dalla data"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+msgid "Date to"
+msgstr "Alla data"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+#: field:gdoc.document,deadline:0
+#: model:ir.ui.menu,name:google_document_link.gdoc_document_deadline
+msgid "Deadline"
+msgstr "Scadenza"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+msgid "Deadline from"
+msgstr "Dalla scadenza"
+
+#. module: google_document_link
+#: field:gdoc.document,deadline_info:0
+msgid "Deadline info"
+msgstr "Info scadenza"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+msgid "Deadline to"
+msgstr "Alla scadenza"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.gdoc_document_form_view
+#: field:gdoc.document,description:0
+msgid "Description"
+msgstr "Descrizione"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.gdoc_document_calendar_view
+msgid "Document deadline"
+msgstr "Documenti con scadenza"
+
+#. module: google_document_link
+#: model:ir.module.category,description:google_document_link.module_gdoc
+msgid "Document document management group."
+msgstr "Gestione gruppi documenti"
+
+#. module: google_document_link
+#: model:ir.ui.menu,name:google_document_link.gdoc_document_document
+msgid "Documenti"
+msgstr "Documenti"
+
+#. module: google_document_link
+#: model:ir.actions.act_window,name:google_document_link.action_gdoc_document_tree
+msgid "Documents"
+msgstr "Documenti"
+
+#. module: google_document_link
+#: selection:gdoc.document,state:0
+msgid "Draft"
+msgstr "Bozza"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+msgid "Draft state"
+msgstr "Stato bozza"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.gdoc_document_form_view
+msgid "Extra info"
+msgstr "Info extra"
+
+#. module: google_document_link
+#: code:addons/google_document_link/document.py:111
+#, python-format
+msgid "For timed document need a deadline!"
+msgstr "Per i documenti in scadenza impostare una data di promemoria"
+
+#. module: google_document_link
+#: view:account.analytic.account:google_document_link.view_analytic_page_form
+#: view:gdoc.document:google_document_link.gdoc_document_form_view
+#: view:gdoc.document:google_document_link.gdoc_document_tree_view
+#: view:hr.analytic.timesheet:google_document_link.view_intervention_page_form
+#: view:product.product:google_document_link.view_product_page_form
+#: view:res.partner:google_document_link.view_res_partner_page_form
+#: view:sale.order:google_document_link.view_order_page_form
+#: view:stock.picking:google_document_link.view_picking_page_form
+msgid "Gdoc"
+msgstr "Gdoc"
+
+#. module: google_document_link
+#: model:ir.module.category,name:google_document_link.module_gdoc
+#: model:ir.ui.menu,name:google_document_link.gdoc_document
+#: model:ir.ui.menu,name:google_document_link.gdoc_root
+msgid "Google Doc."
+msgstr "Google Doc."
+
+#. module: google_document_link
+#: model:res.groups,name:google_document_link.group_gdoc_admin
+msgid "Google Doc. administrator"
+msgstr "Google Doc. amministrator"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.gdoc_document_form_view
+#: view:gdoc.document:google_document_link.gdoc_document_tree_view
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+msgid "Google Doc. document"
+msgstr "Google Doc. documento"
+
+#. module: google_document_link
+#: view:gdoc.protocol:google_document_link.view_gdoc_protocol_form
+#: view:gdoc.protocol:google_document_link.view_gdoc_protocol_tree
+#: model:ir.actions.act_window,name:google_document_link.action_gdoc_protocol
+msgid "Google Doc. protocol"
+msgstr "Google Doc. protocollo"
+
+#. module: google_document_link
+#: model:res.groups,name:google_document_link.group_gdoc_user
+msgid "Google Doc. user"
+msgstr "Google Doc. utente"
+
+#. module: google_document_link
+#: view:account.analytic.account:google_document_link.view_analytic_page_form
+#: view:hr.analytic.timesheet:google_document_link.view_intervention_page_form
+#: view:product.product:google_document_link.view_product_page_form
+#: view:res.partner:google_document_link.view_res_partner_page_form
+#: view:sale.order:google_document_link.view_order_page_form
+#: view:stock.picking:google_document_link.view_picking_page_form
+msgid "Google Docs:"
+msgstr "Google Docs:"
+
+#. module: google_document_link
+#: field:account.analytic.account,gdoc_ids:0
+#: field:hr.analytic.timesheet,gdoc_ids:0
+#: model:ir.model,name:google_document_link.model_gdoc_document
+#: field:product.product,gdoc_ids:0 field:res.partner,gdoc_ids:0
+#: field:sale.order,gdoc_ids:0 field:stock.picking,gdoc_ids:0
+msgid "Google Document"
+msgstr "Google Documento"
+
+#. module: google_document_link
+#: field:gdoc.document,link:0
+msgid "Google doc. Link"
+msgstr "Google doc. Link"
+
+#. module: google_document_link
+#: model:ir.model,name:google_document_link.model_gdoc_protocol
+msgid "Google document protocol"
+msgstr "Google protocollo documento"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+msgid "Group By"
+msgstr "Raggruppa per..."
+
+#. module: google_document_link
+#: selection:gdoc.document,priority:0
+msgid "Highest"
+msgstr "Altissima"
+
+#. module: google_document_link
+#: field:gdoc.document,id:0 field:gdoc.protocol,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: google_document_link
+#: field:gdoc.document,write_uid:0 field:gdoc.protocol,write_uid:0
+msgid "Last Updated by"
+msgstr "Aggiornato da"
+
+#. module: google_document_link
+#: field:gdoc.document,write_date:0 field:gdoc.protocol,write_date:0
+msgid "Last Updated on"
+msgstr "Aggiornato il"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.gdoc_document_form_view
+msgid "Linked document"
+msgstr "Documento collegato"
+
+#. module: google_document_link
+#: selection:gdoc.document,priority:0
+msgid "Low"
+msgstr "Bassa"
+
+#. module: google_document_link
+#: selection:gdoc.document,priority:0
+msgid "Lowest"
+msgstr "Bassissima"
+
+#. module: google_document_link
+#: model:ir.actions.act_window,name:google_document_link.action_gdoc_my_document_tree
+msgid "My Documents"
+msgstr "I miei documenti"
+
+#. module: google_document_link
+#: model:ir.ui.menu,name:google_document_link.gdoc_document_my_document
+msgid "My document"
+msgstr "I miei documenti"
+
+#. module: google_document_link
+#: model:ir.actions.act_window,name:google_document_link.action_gdoc_deadline_document_tree
+msgid "My documents deadline"
+msgstr "Scadenze miei documenti"
+
+#. module: google_document_link
+#: selection:gdoc.document,priority:0
+msgid "Normal"
+msgstr "Normale"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.gdoc_document_form_view
+#: field:gdoc.document,note:0
+#: view:gdoc.protocol:google_document_link.view_gdoc_protocol_form
+#: field:gdoc.protocol,note:0
+msgid "Note"
+msgstr "Note"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+msgid "Order"
+msgstr "Ordine"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+#: field:gdoc.document,partner_id:0
+#: model:ir.model,name:google_document_link.model_res_partner
+msgid "Partner"
+msgstr "Partner"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+#: field:gdoc.document,picking_id:0
+msgid "Picking"
+msgstr "Prelievo"
+
+#. module: google_document_link
+#: model:ir.model,name:google_document_link.model_stock_picking
+msgid "Picking List"
+msgstr "Lista prelievo"
+
+#. module: google_document_link
+#: field:gdoc.document,priority:0
+msgid "Priority"
+msgstr "Priorità"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+#: field:gdoc.document,product_id:0
+#: model:ir.model,name:google_document_link.model_product_product
+msgid "Product"
+msgstr "Prodotto"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+#: field:gdoc.document,protocol_id:0 field:gdoc.protocol,name:0
+#: model:ir.ui.menu,name:google_document_link.gdoc_administration_protocol
+msgid "Protocol"
+msgstr "Protocollo"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.gdoc_document_form_view
+#: view:gdoc.document:google_document_link.gdoc_document_tree_view
+msgid "Reactivate"
+msgstr "Riattiva"
+
+#. module: google_document_link
+#: field:gdoc.document,order_id:0
+msgid "Sale Order"
+msgstr "Ordine di vendita"
+
+#. module: google_document_link
+#: model:ir.model,name:google_document_link.model_sale_order
+msgid "Sales Order"
+msgstr "Ordine di vendita"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.gdoc_document_tree_view
+msgid "Scad."
+msgstr "Scad."
+
+#. module: google_document_link
+#: field:gdoc.document,sequence:0
+msgid "Sequence"
+msgstr "Sequenza"
+
+#. module: google_document_link
+#: field:gdoc.document,state:0
+msgid "State"
+msgstr "Stato"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+msgid "Status"
+msgstr "Stato"
+
+#. module: google_document_link
+#: field:gdoc.document,name:0
+msgid "Subject"
+msgstr "Oggetto"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.gdoc_document_form_view
+#: view:gdoc.document:google_document_link.gdoc_document_tree_view
+#: selection:gdoc.document,state:0
+msgid "Timed"
+msgstr "Con scadenza"
+
+#. module: google_document_link
+#: code:addons/google_document_link/document.py:110
+#, python-format
+msgid "Timed document"
+msgstr "Documento a scadenza"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+msgid "Timed state"
+msgstr "Stato a scadenza"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+#: field:gdoc.document,timesheet_id:0
+msgid "Timesheet"
+msgstr "Intervento"
+
+#. module: google_document_link
+#: model:ir.model,name:google_document_link.model_hr_analytic_timesheet
+msgid "Timesheet Line"
+msgstr "Riga foglio presenze"
+
+#. module: google_document_link
+#: view:gdoc.document:google_document_link.view_gdoc_document_gdoc_search
+#: field:gdoc.document,user_id:0
+msgid "User"
+msgstr "Utente"
+
+#. module: google_document_link
+#: model:res.groups,comment:google_document_link.group_gdoc_user
+msgid "User that access to documents."
+msgstr "Utente che accede al documento"
+
+#. module: google_document_link
+#: model:res.groups,comment:google_document_link.group_gdoc_admin
+msgid "User that can see the configuration forms"
+msgstr "Utente che può accedere alla configurazione"
+
+#. module: google_document_link
+#: selection:gdoc.document,priority:0
+msgid "high"
+msgstr "Alta"
