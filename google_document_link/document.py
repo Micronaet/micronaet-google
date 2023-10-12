@@ -135,6 +135,7 @@ class GdocDocument(orm.Model):
         'user_id': fields.many2one('res.users', 'User', required=True),
 
         # Foreign keys:
+        'ticket_id': fields.many2one('account.analytic.ticket', 'Ticket'),
         'partner_id': fields.many2one('res.partner', 'Partner'),
         'product_id': fields.many2one('product.product', 'Product'),
         'account_id': fields.many2one('account.analytic.account', 'Account'),
@@ -167,6 +168,7 @@ class GdocDocument(orm.Model):
         'state': lambda *x: 'draft',        
         'user_id': lambda s, cr, uid, ctx: uid,
         }    
+
 
 class ResPartner(orm.Model):
     """ Model name: ResPartner
@@ -221,6 +223,17 @@ class HrAnalyticTYimesheet(orm.Model):
     _columns = {
         'gdoc_ids': fields.one2many(
             'gdoc.document', 'timesheet_id', 'Google Document'),
+        }
+
+class AccountAnalyticTicket(orm.Model):
+    """ Model name: Ticket
+    """
+    
+    _inherit = 'account.analytic.ticket'
+    
+    _columns = {
+        'gdoc_ids': fields.one2many(
+            'gdoc.document', 'ticket_id', 'Google Document'),
         }
 
 class StockPicking(orm.Model):
