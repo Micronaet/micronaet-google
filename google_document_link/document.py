@@ -30,30 +30,31 @@ from openerp import SUPERUSER_ID
 from openerp import tools
 from openerp.tools.translate import _
 from openerp.tools.float_utils import float_round as round
-from openerp.tools import (DEFAULT_SERVER_DATE_FORMAT, 
-    DEFAULT_SERVER_DATETIME_FORMAT, 
-    DATETIME_FORMATS_MAP, 
+from openerp.tools import (DEFAULT_SERVER_DATE_FORMAT,
+    DEFAULT_SERVER_DATETIME_FORMAT,
+    DATETIME_FORMATS_MAP,
     float_compare)
 
 
 _logger = logging.getLogger(__name__)
 
+
 class GdocProtocol(orm.Model):
-    ''' Object gdoc.protocol
-    '''    
+    """ Object gdoc.protocol
+    """
     _name = 'gdoc.protocol'
     _description = 'Google document protocol'
     _order = 'name'
 
-    _columns = {        
+    _columns = {
         'name': fields.char('Protocol', size=64, required=True,
             translate=True),
         'note': fields.text('Note', translate=True),
         }
-        
+
 class GdocDocument(orm.Model):
-    ''' Object gdoc.document
-    '''    
+    """ Object gdoc.document
+    """
     _name = 'gdoc.document'
     _description = 'Google Document'
     _order = 'sequence, date desc'
@@ -62,9 +63,9 @@ class GdocDocument(orm.Model):
     # Button:
     # -------------------------------------------------------------------------
     def open_gdoc_link(self, cr, uid, ids, context=None):
-        '''
-        '''
-        gdoc = self.browse(cr, uid, ids, context=context)[0]        
+        """
+        """
+        gdoc = self.browse(cr, uid, ids, context=context)[0]
         return {
             'type': 'ir.actions.act_url',
             'url': gdoc.link,
@@ -76,13 +77,13 @@ class GdocDocument(orm.Model):
     # -------------------------------------------------------------------------
     def dummy(self, cr, uid, ids, context=None):
         return True
-        
+
     # -------------------------------------------------------------------------
-    # Workflow state event: 
+    # Workflow state event:
     # -------------------------------------------------------------------------
     def document_draft(self, cr, uid, ids, context=None):
-        ''' WF draft state
-        '''
+        """ WF draft state
+        """
         assert len(ids) == 1, 'Works only with one record a time'
         self.write(cr, uid, ids, {
             'state': 'draft',
@@ -90,31 +91,31 @@ class GdocDocument(orm.Model):
         return True
 
     def document_confirmed(self, cr, uid, ids, context=None):
-        ''' WF confirmed state
-        '''        
+        """ WF confirmed state
+        """
         assert len(ids) == 1, 'Works only with one record a time'
         data = {'state': 'confirmed'}
-        
+
         protocol_pool = self.pool.get('gdoc.protocol')
         return self.write(cr, uid, ids, data, context=context)
 
     def document_timed(self, cr, uid, ids, context=None):
-        ''' WF timed state
-        '''
+        """ WF timed state
+        """
         assert len(ids) == 1, 'Works only with one record a time'
         data = {'state': 'timed'}
-        
+
         current_proxy = self.browse(cr, uid, ids, context=context)[0]
         if not current_proxy.deadline:
             raise osv.except_osv(
-                _('Timed document'), 
+                _('Timed document'),
                 _('For timed document need a deadline!'),
                 )
         return self.write(cr, uid, ids, data, context=context)
 
     def document_cancel(self, cr, uid, ids, context=None):
-        ''' WF cancel state
-        '''
+        """ WF cancel state
+        """
         assert len(ids) == 1, 'Works only with one record a time'
         data = {'state': 'cancel'}
         return self.write(cr, uid, ids, data, context=context)
@@ -125,12 +126,12 @@ class GdocDocument(orm.Model):
         'description': fields.text('Description'),
         'note': fields.text('Note'),
         'link': fields.text('Google doc. Link', required=True),
-        
+
         'date': fields.date('Date', required=True),
         'deadline_info': fields.char('Deadline info', size=80),
         'deadline': fields.date('Deadline'),
 
-        # OpenERP many2one 
+        # OpenERP many2one
         'protocol_id': fields.many2one('gdoc.protocol', 'Protocol'),
         'user_id': fields.many2one('res.users', 'User', required=True),
 
@@ -143,39 +144,39 @@ class GdocDocument(orm.Model):
         'timesheet_id': fields.many2one('hr.analytic.timesheet', 'Timesheet'),
         'picking_id': fields.many2one('stock.picking', 'Picking'),
         # Invoice DDT
-                
+
         'priority': fields.selection([
             ('lowest', 'Lowest'),
             ('low', 'Low'),
             ('normal', 'Normal'),
             ('high', 'high'),
-            ('highest', 'Highest'), 
+            ('highest', 'Highest'),
             ], 'Priority'),
-        
+
         'state': fields.selection([
             ('draft', 'Draft'),
             ('confirmed', 'Confirmed'),
             ('timed', 'Timed'),
-            ('cancel', 'Cancel'), 
+            ('cancel', 'Cancel'),
             ], 'State', readonly=True),
         }
-        
+
     _defaults = {
         'sequence': 10,
         'date': lambda *x: datetime.now().strftime(
             DEFAULT_SERVER_DATE_FORMAT),
         'priority': lambda *x: 'normal',
-        'state': lambda *x: 'draft',        
+        'state': lambda *x: 'draft',
         'user_id': lambda s, cr, uid, ctx: uid,
-        }    
+        }
 
 
 class ResPartner(orm.Model):
     """ Model name: ResPartner
     """
-    
+
     _inherit = 'res.partner'
-    
+
     _columns = {
         'gdoc_ids': fields.one2many(
             'gdoc.document', 'partner_id', 'Google Document'),
@@ -184,9 +185,9 @@ class ResPartner(orm.Model):
 class SaleOrder(orm.Model):
     """ Model name: Sale order
     """
-    
+
     _inherit = 'sale.order'
-    
+
     _columns = {
         'gdoc_ids': fields.one2many(
             'gdoc.document', 'order_id', 'Google Document'),
@@ -195,20 +196,20 @@ class SaleOrder(orm.Model):
 class ProductProduct(orm.Model):
     """ Model name: Product Product
     """
-    
+
     _inherit = 'product.product'
-    
+
     _columns = {
         'gdoc_ids': fields.one2many(
             'gdoc.document', 'product_id', 'Google Document'),
         }
-        
+
 class AccountAnalyticAccount(orm.Model):
     """ Model name: Account analytic account
     """
-    
+
     _inherit = 'account.analytic.account'
-    
+
     _columns = {
         'gdoc_ids': fields.one2many(
             'gdoc.document', 'account_id', 'Google Document'),
@@ -217,9 +218,9 @@ class AccountAnalyticAccount(orm.Model):
 class HrAnalyticTYimesheet(orm.Model):
     """ Model name: HR Analytic Timesheet
     """
-    
+
     _inherit = 'hr.analytic.timesheet'
-    
+
     _columns = {
         'gdoc_ids': fields.one2many(
             'gdoc.document', 'timesheet_id', 'Google Document'),
@@ -228,9 +229,9 @@ class HrAnalyticTYimesheet(orm.Model):
 class AccountAnalyticTicket(orm.Model):
     """ Model name: Ticket
     """
-    
+
     _inherit = 'account.analytic.ticket'
-    
+
     _columns = {
         'gdoc_ids': fields.one2many(
             'gdoc.document', 'ticket_id', 'Google Document'),
@@ -239,12 +240,12 @@ class AccountAnalyticTicket(orm.Model):
 class StockPicking(orm.Model):
     """ Model name: Stock Picking
     """
-    
+
     _inherit = 'stock.picking'
-    
+
     _columns = {
         'gdoc_ids': fields.one2many(
             'gdoc.document', 'picking_id', 'Google Document'),
         }
-        
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
